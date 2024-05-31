@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="sectionOne">
+
+    </section>
+
+    <section class="sectionTwo"></section>
+    <section class="sectionTwo"></section>
+    <button onclick="isEven()">Click me</button>
+    <button onclick="greetings()">Greetings</button>
+
+    <input type="text" id="inputOne">
+    <button onclick="greet()">Greet me</button>
+</body>
+<script>
+    // let divOne = document.createElement("div");
+    // let parent = document.body;
+    // parent.appendChild(divOne);
+
+    // divOne.style.backgroundColor = "Green";
+    // divOne.style.width = "200px";
+    // divOne.style.height = "200px";
+
+    // let num1 = 22;
+    // console.log(num1)
+
+    // let myName = "Adegboyega";
+    // console.log(myName);
+
+
+
+    // myName = "Emmanuel";
+    // console.log(myName);
+
+    // var age = 25;
+    // age = 45;
+    // console.log(age);
+
+    // let test
+
+    // test = 'testRam'
+
+    // const pi = 3.14
+    // console.log(pi);
+
+    // food = "Fried rice";
+    // console.log(food);
+    // var food
+
+
+    // drink = "Pepsi";
+    // var drink;
+
+
+    // //Primitive data types
+    // // Strings, Numbers, BigInt, Booleans, null, undefined
+
+    // let stringOne = 'This is a string, 999, **&^%$#$%^&*(*&^%$E#WE$%^&*&^%$)'
+    // let stringTwo = "This is another string !@#$%^&*(*&^%$%^&*()_+_)(*&^%$#@!@#$%^&)"
+    // let stringThree = `This is yet another valid string, %^&*&^%$#$%^&^%$#@!#$%^&*()_`
+
+    // console.log(Number.MAX_VALUE);
+
+    // let firstNum = 45;
+    // let secondNum = firstNum;
+
+    // secondNum = 77;
+    // console.log(firstNum);
+
+
+    // let arrOne = ["Adewole", "Adegboyega", "Emmanuel", "Jamiu"];
+    // let arrTwo = arrOne;
+
+    // arrOne[0] = "Test";
+
+    // console.log(arrTwo);
+
+    // let objOne = {
+    //     name:"Adegboyega",
+    //     food:"Jollof Rice",
+    //     club:"Real Madrid",
+    // };
+
+    // let objTwo = objOne;
+
+    // objTwo["club"] = 'Barcelona';
+
+    // console.log(objOne);
+
+    //ogunbaja24@gmail.com
+    //09091402551
+
+
+    // SECOND CLASS
+    //Operators in JavaScript;
+    //Assignment operators
+    // let nameOne = "Ebuka";
+    // console.log(nameOne);
+
+    // let numOne = 25;
+    // let numTwo = 43;
+
+    // numOne = numOne + numTwo
+    // console.log(numOne)
+    // numTwo += numOne;
+    // console.log(numTwo);
+
+    let numThree = 15;
+    numOne -= numThree;
+    console.log(numOne);
+
+    let numFour = 5
+    numThree *= numFour;
+    console.log(numThree)
+
+    console.log(7 % 4);
+
+    let numFive = 75;
+    let numSix = 4;
+    numFive = numFive % numSix;
+    console.log(numFive);
+
+    //Unitary operator;
+    console.log(typeof "Ebuka");
+
+    //Comparison Operators
+    let num7 = 75;
+    let num8 = 17;
+
+    console.log(num7 == num8);
+    console.log(22 === '22');
+    console.log(28 <= 7);
+
+    //Logical Operators
+    console.log(true && true && true && true && true && false); //Logical and operator
+    console.log(true || true || true || true || true || false); //Logical or operator
+
+    console.log((33 === '33') && (45 > 5) && (35 < 77));
+    console.log((77 > 107) || (23 == '23') || (145 < 25) || (222 !== 335));
+
+    //Ternary Operators
+    //condition ? what should happen if the condition is true : what should happen if the condition is false
+
+    // (33 > 3) ? alert("True") : alert("False");
+
+    // let name = prompt("Enter your numbers");
+    // alert("Welcome" + " " + numbers);
+    // alert(`Welcome ${numbers}`)
+
+    // Assignment
+   // JavaScript program to check if the number is even or odd
+// let number = prompt("Enter any number: ");
+// ternary operator
+// let emma = (number % 2  == 0) ? alert("Even") : alert("Odd");
+// console.log("The number is :" , emma);
+
+// Program in JavaScript to check if the number is even or odd
+// const num = prompt("Enter a number: ");
+// if (num % 2 == 0) 
+//     console.log("The number is Even.");
+
+// else 
+//     console.log("The number is odd.");
+
+
+
+// let num = prompt("Enter your name");
+// num = Number (num);
+
+// if(isNaN(num)) {
+//     alert("Invalid input")
+// }
+
+// let date = prompt(" Enter your day of the week")
+// date = Number (date);
+
+// switch (date) {
+//     case 1:
+//         alert("The first day of the week is Sunday");
+//         break;
+
+//         case 2:
+//         alert("The first day of the week is Sunday");
+//         break;
+
+//         case 3:
+//         alert("The first day of the week is Sunday");
+//         break;
+// }
+
+let num = prompt ("Enter your number");
+// num = Number (userInput)
+// function isPrime(num) {
+    // if (num <= 1) return false; // Numbers less than or equal to 1 are not prime
+    // for (let i = 2; i < num; i++) {
+    //     if (num % i === 0) {
+            // return false; // If num is divisible by any number other than 1 and itself
+    //     }
+    // }
+    // return true; // If no divisors were found, num is a prime number
+
+// Example of user input (in a real-world scenario, this could be from a form or console input)
+// const userInput = 11;
+// console.log(`Is ${userInput} a prime number? `, isPrime(userInput));
+
+
+
+function checkPrime(num){
+    let res = true;
+    if(num<=1){
+        res = false;
+    }
+
+    for(let i=2; i*i<=num; i++){
+        if(num%i===0){
+            res = false;
+            break;
+        }
+    }
+    if(res){
+        console.log(num, " is a prime number.");
+    }
+    else{
+        console.log(num, " is not a prime number.");
+    }
+}
+checkPrime(4);
+checkPrime(5);
+
+
+let nuM = prompt("Enter your number: ");
+    nuM = Number(nuM); { 
+
+    
+    let emma = true;
+    if(nuM<=1){
+        emma = false;
+    }
+
+    for (let i=2; i*i<=nuM; i++){
+        if(nuM%i===0){
+            emma = false;
+            break;
+        }
+    }
+    
+    if(emma) {
+        alert(`${nuM} is a prime number.`);
+    }
+            
+    else {
+        alert(`${nuM} is not prime number.`);
+    }
+}
+
+
+  // DOM manipulation in JS
+  let details = {
+        name: "Ebuka",
+        age: 1111,
+        club: "Man Utd",
+        isSingle: true,
+        doubleAge(){
+            return this.age * 2
+        }
+    }
+    // details[""]
+
+    let divOne = document.createElement("div");
+    let parent = document.body;
+    parent.appendChild(divOne);
+    divOne.id = "divOne";
+    divOne.style.backgroundColor = "yellow";
+    divOne.style.borderRadius = "100%";
+    divOne.style.width = "200px";
+    divOne.style.height = "200px";
+    divOne.innerText = "<h1>My name is Jamiu</h1>";
+
+
+    let sectionOne = document.getElementById("sectionOne");
+    sectionOne.innerHTML = "<h1>Welcome to JavaScript class</h1>";
+
+    // let sectionTwo = document.getElementsByClassName("sectionTwo");
+    let sectionTwo = document.querySelector(".sectionTwo")
+    sectionTwo.innerHTML = "<h1>Welcome to JavaScript class 1</h1>";
+
+
+    
+    
+    
+    
+    
+    let inputOne = document.getElementById("inputOne");
+    function greet(){
+        let name = inputOne.value;
+        alert(`Welcome, ${name}`)
+    }
+    //Functions in Javascript;
+    function isEven (){
+        let num = prompt("Enter your number: ");
+        num = Number(num);
+        if(isNaN(num)){
+            alert(`${num} is an invalid input`)
+        }else if(num % 2 === 0){
+            alert(`${num} is an even number`)
+        }else{
+            alert(`${num} is an odd number`)
+        }
+    }
+
+    const greetings = () => {
+        let name = prompt('Enter your name: ');
+        alert(`Welcome ${name}`);
+    }
+
+    function arithmeticOperations(a, b){
+        const add = a + b;
+        const subtract = a - b;
+        const divide = a / b;
+        const multiply = a * b;
+        const modulo = a % b;
+        return [add, subtract, divide, multiply, modulo];
+    }
+    let operations = arithmeticOperations(6, 2);
+    console.log(operations);
+
+
+</script>
+
+</html>

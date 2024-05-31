@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+
+  <body>   
+        <p>The charAt() method returns the character at a given position in a string:</p>
+        
+        <p id="demo"></p>
+        <button onclick="analyze()">Click me</button>
+        
+        <script>
+        let text = "HELLO WORLD";
+        // showing on DOM
+         document.getElementById("demo").innerHTML = text.charAt(8);
+        //  OR Showing on console
+         let items = text.charAt(8)
+         console.log(items);
+       
+          // USING ASCII
+         let tetx = "HELLO WORLD";
+document.getElementById("demo").innerHTML = text.charCodeAt(9);
+       
+// slice() extracts a part of a string and returns the extracted part in a new string.
+
+// The method takes 2 parameters: start position, and end position (end not included).
+let tet = "Apple, Banana, Kiwi";
+// let part = tet.slice(15,19); kiwi
+let part = tet.slice(7,13);
+document.getElementById("demo").innerHTML = part; 
+       
+// <p>Extract a part of a string from position 7:</p>
+let tt = "Apple, Banana, Kiwi";
+let pat = tt.slice(7)
+document.getElementById("demo").innerHTML = pat;  
+
+ //String methods in Javascript
+ let nameOne = "Emmanuel" + "test";
+    console.log(nameOne.length);
+
+       
+// <p>Extract a part of a string counting from the end:</p>   
+let txt = "Apple, Banana, Kiwi";
+let patr = txt.slice(-12);
+document.getElementById("demo").innerHTML = patr;
+       
+// The difference is that start and end values less than 0 are treated as 0 in substring().  
+let str = "Apple, Banana, Kiwi";
+document.getElementById("demo").innerHTML = str.substring(7,19);
+ 
+let testOne = "My name is Cole Palmer. I play for Chelsea FC";
+let testFive = testOne.toUpperCase();
+    console.log(testFive);
+  
+  // <p>The concat() method joins two or more strings:</p>
+  let text1 = "Hello";
+let text2 = "World!";
+let text3 = text1.concat(" ",text2);
+document.getElementById("demo").innerHTML = text3;
+
+let userName = " Gboyega ";
+    console.log(userName);
+    // OR
+    console.log(userName.trim());
+    document.getElementById("demo").innerHTML = userName;
+
+    // <p>repeat() returns a new string with a number of copies of a string:</p>
+    let teXt = "Hello world!";
+let result = teXt.repeat(5);
+document.getElementById("demo").innerHTML = result;
+
+// The replace() method replaces a specified value with another value in a string:
+let factos = "Mourinho is better than Pep";
+    factos = factos.replace("Mourinho", "Ancelotti");
+    console.log(factos)
+
+    let tExt = "I love cats. Cats are very easy to love. Cats are very popular."
+tExt = text.replaceAll("Cats","Dogs");
+// text = text.replaceAll("cats","dogs");
+
+document.getElementById("demo").innerHTML = text;
+
+    //indexOf
+    console.log(testOne.indexOf("Man utd"));
+
+    //includes
+    console.log(testOne.includes("Arsenal"));
+
+
+    let palmerArr = testOne.split(" ");
+    console.log(palmerArr);
+
+    let testTwo = "Messi|is|the|greatest|of|them|all";
+    let messiArr = testTwo.split("|");
+    console.log(messiArr);
+    let testThree
+    for (let i = 0; i < messiArr.length; i++) {
+        const element = messiArr[i];
+        if(element === "greatest"){
+            testThree = element;
+        }
+    }
+
+
+    function analyze() {
+            // Prompt user for a sentence
+            let sentence = prompt("Enter a sentence:");
+            if (!sentence) {
+                alert("No sentence entered. Please try again.");
+                return;
+            }
+
+            
+            const substring = "example";
+            let upperCaseSentence = sentence.toUpperCase();
+            let lowerCaseSentence = sentence.toLowerCase();
+            let length = sentence.length;
+            let includesSubstring = sentence.includes(substring);
+            let indexOfSubstring = sentence.indexOf(sentence);
+
+            let resultMessage = `
+                Original Sentence: "${sentence}"
+                Uppercase: "${upperCaseSentence}"
+                Lowercase: "${lowerCaseSentence}"
+                Length:  ${length}
+                Includes "${substring}": ${includesSubstring}
+                Index of "${substring}": ${indexOfSubstring === -1 ? "Not found" : indexOfSubstring}
+            `;
+
+            // Display the results
+            alert(resultMessage);
+        }
+       </script>
+        
+        </body>
+</html>

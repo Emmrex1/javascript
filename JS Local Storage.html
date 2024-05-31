@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+<style>
+    #divOne {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+   
+    <section id="sectionOne">
+
+    </section>
+
+    <section id="sectionTwo">
+
+    </section>
+
+    <section id="sectionThree">
+
+    </section>
+<p id="demo"></p>
+<button onclick="clicounter()">click me</button>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<button onclick="terminateTimeout">Terminate</button>
+</body>
+<script>
+    //Local storage in JavaScript.
+    // localStorage.setItem("name", "Adegboyega"); 
+    // let firstArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    //  let stringifiedArr = JSON.stringify(firstArr);
+    //  console.log(firstArr, stringifiedArr);
+    //  localStorage.setItem("numArr", stringifiedArr);
+
+    //  let numArr2 = localStorage.getItem("numArr");
+    //  numArr2 = JSON.parse(numArr2);
+    //  console.log(numArr2);
+
+    //  localStorage.removeItem("name");
+
+    //   localStorage.clear();
+
+
+clicounter();
+function clicounter() {
+if (localStorage.clicount) {  localStorage.clicount = Number(localStorage.clicount)+1
+
+}else{
+    localStorage.clicount 
+}
+document.getElementById("demo").innerHTML= localStorage.clicount
+}
+
+let myJON = '{"name":"Emmanuel","age":"27","city":"Ibadan"}'
+let Myobj = JSON.parse(myJON)
+document.getElementById("demo2").innerHTML= Myobj.age
+
+
+var myObj, myJSON, text, obj;
+
+//Storing data:
+myObj = { "name":"John", "age":31, "city":"New York" };
+myJSON = JSON.stringify(myObj);
+localStorage.setItem("testJSON", myJSON);
+
+//Retrieving data:
+ text = localStorage.getItem("testJSON");
+ obj = JSON.parse(text);
+ document.getElementById("demo").innerHTML = obj.name
+//  localStorage.clear();
+
+
+let emma = document.getElementById("demo3")
+function Emmanuel(){
+ emma.innerHTML+= "Olawale."
+}
+let intervaltwo = setInterval(Emmanuel,2000 )
+
+
+let sectionOne = document.getElementById("sectionOne")
+let sectionTwo = document.getElementById("sectionTwo")
+let sectionThree = document.getElementById("sectionThree")
+setInterval(() => {
+ let date = new Date();
+  let wale = date.getSeconds();
+  let emm = date.getMinutes();
+  let yemi = date.getHours();
+  sectionOne.innerHTML = wale;
+  sectionTwo.innerHTML = emm;
+  sectionThree.innerHTML =yemi
+},1000)
+
+ let timeoutOne = setTimeout(() => {
+      clearInterval(intervalOne)
+      }, 20000)
+
+
+     function terminateTimeout() {
+          clearTimeout(timeoutOne);
+      }
+
+
+
+</script>
+
+</html>

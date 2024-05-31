@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #divOne {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <section id="sectionOne">
+
+    </section>
+
+    <section class="sectionTwo"></section>
+    <button onclick="isEven()">Click me</button>
+    <button onclick="greetings()">Greetings</button>
+
+    <input type="text" id="inputOne">
+    <button onclick="greet()">Greet me</button>
+
+    <div id="divTwo">
+
+    </div>
+    <button onclick="displayNum(1)" id="ERRR">1</button>
+    <button onclick="displayNum(2)" id="ERRR">2</button>
+    <button onclick="displayNum(3)" id="ERRR">3</button>
+    <button onclick="displayNum(4)" id="ERRR">4</button>
+    <button onclick="displayNum(5)" id="ERRR">5</button>
+    <button onclick="displayNum(6)" id="ERRR">6</button>
+    <button onclick="displayNum(7)" id="ERRR">7</button>
+    <button onclick="displayNum(8)" id="ERRR">8</button>
+    <button onclick="displayNum(9)" id="ERRR">9</button>
+    <button onclick="displayNum(0)" id="ERRR">0</button>
+    <br>
+    <button onclick="operationsTwo('+')">+</button>
+    <button onclick="operationsTwo('-')">-</button>
+    <button onclick="operationsTwo('/')">/</button>
+    <button onclick="operationsTwo('*')">*</button>
+    <br>
+    <button onclick="equals()">=</button>
+</body>
+<script>
+    let divTwo = document.getElementById("divTwo")
+    let operator;
+    let firstNum;
+    function displayNum(params){
+        divTwo.innerHTML += params
+    }
+
+    function operationsTwo(params){
+        operator = params;
+        firstNum = divTwo.innerHTML;
+        divTwo.innerHTML = ""
+    }
+
+    function equals(){
+        if(operator === "+"){
+            divTwo.innerHTML = Number(firstNum) + Number(divTwo.innerHTML)
+        }
+    }
+
+    
+
+
+
+    let inputOne = document.getElementById("inputOne");
+    function greet() {
+        let name = inputOne.value;
+        alert(`Welcome, ${name}`)
+    }
+    //Functions in Javascript;
+    function isEven() {
+        let num = prompt("Enter your number: ");
+        num = Number(num);
+        if (isNaN(num)) {
+            alert(`${num} is an invalid input`)
+        } else if (num % 2 === 0) {
+            alert(`${num} is an even number`)
+        } else {
+            alert(`${num} is an odd number`)
+        }
+    }
+
+    const greetings = () => {
+        let name = prompt('Enter your name: ');
+        alert(`Welcome ${name}`);
+    }
+
+    function arithmeticOperations(a, b) {
+        const add = a + b;
+        const subtract = a - b;
+        const divide = a / b;
+        const multiply = a * b;
+        const modulo = a % b;
+        return [add, subtract, divide, multiply, modulo];
+    }
+    let operations = arithmeticOperations(6, 2);
+    console.log(operations);
+
+
+</script>
+
+</html>

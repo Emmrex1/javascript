@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #divOne {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <p id="demo"></p>
+</body>
+<script>
+const myGirls = ["Cecilie", "Lone"];
+const myBoys = ["Emil", "Tobias", "Linus"];
+const myChildren = myBoys.concat(myGirls);
+document.getElementById("demo").innerHTML = myChildren;
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.copyWithin(3,1);
+
+
+ //Array methods in js
+ let arrOne = ["Blue", "Green", "Red", "Yellow"];
+    let arrTwo = new Array("Wole", "Anthony", "Gboyega", "Jamiu", "Emmanuel");
+
+    arrOne.push("Black"); //Used to add an item to the end of your array. Modifies the array
+    arrOne.pop() //Used to remove the last item in an array. Modifies the array
+
+    arrOne.unshift("Pink"); //Used to add an item to the beginning of an array. Modifies the array
+    arrOne.shift(); //Used to remove the first item of an array. Modifies the array
+
+    console.log(arrOne);
+
+    let firstArr = ["Wole", "Anthony", "Gboyega", "Jamiu", "Emmanuel"];
+    let firstTest = firstArr.join(" "); //Used to convert an array to a string. Takes an argument which is the separator that separates the items of the returned string. returns a string
+    console.log(firstTest)
+    let secondTest = firstArr.toString(); //Used to convert an array to a string. Returns a string.
+    console.log(secondTest);
+
+    let secondArr = firstArr.concat(arrOne, arrTwo); //Used to merge two or more arrays together. Returns an array
+    console.log(secondArr);
+
+    let thirdArr = ["Chelsea", "Liverpool", "Man City", "Nottingham Forest", "Aston Villa", "Man Utd", "Arsenal"]
+    let fourthArray = thirdArr.slice(0, 3); //Used to create a new array from an existing one. Returns a new array.
+    console.log(fourthArray)
+
+    let details = [
+        { randomNum: 9, name: "Emmanuel", age: 1115, color: "Grey", isSingle: "true" },
+        { randomNum: 3, randomNum: 5, name: "Wole", age: 1111, color: "Grey", isSingle: "true" },
+        { randomNum: 4, name: "Anthony", age: 1112, color: "Green", isSingle: "true" },
+        { randomNum: 6, name: "Gboyega", age: 1113, color: "Blue", isSingle: "true" },
+        { randomNum: 8, name: "Jamiu", age: 1114, color: "Indigo", isSingle: "true" },
+        { randomNum: 2, name: "Emmanuel", age: 1115, color: "Grey", isSingle: "true" }
+    ];
+
+    details.splice(4, 1);
+    console.log(details)
+
+    details.splice(4, 1, { name: "Emmanuel", age: 1115, color: "Grey", isSingle: "Sare wa" });
+    console.log(details);
+
+
+
+    //Array Iteration methods
+    //forEach
+    let numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    numArr.forEach((item, index) => {
+        console.log(item * 5);
+    });
+
+    let strArr = ["Wole", "Anthony", "Emmanuel", "Jamiu", "Gboyega"];
+    strArr.forEach((item, index) => {
+        console.log(`My name is ${item}`);
+    });
+
+    //map
+    let numArr2 = numArr.map((item, index) => {
+        return item * 7
+    })
+
+    console.log(numArr2)
+
+    //filter
+    let strArr2 = strArr.filter((item, index) => {
+        return item.toUpperCase().includes("A");
+    })
+    console.log(strArr2);
+
+    let numArr3 = numArr.filter((item, index) => {
+        return item % 2 === 0
+    });
+    console.log(numArr3);
+
+    //find
+    let strName = strArr.find((item, index) => {
+        return item.toUpperCase().includes("A");
+    });
+    console.log(strName);
+
+    //reduce
+    let reducedNum = numArr.reduce((total, item, index) => {
+        let sum = total + item;
+        return sum;
+    }, 0);
+    console.log(reducedNum);
+
+    let testArr = [
+        { item: "Apple", price: 500, quantity: 5 },
+        { item: "Bananas", price: 500, quantity: 5 },
+        { item: "Mangoes", price: 125, quantity: 9 },
+        { item: "Carrot", price: 20, quantity: 7 },
+        { item: "Watermelon", price: 200, quantity: 8 },
+        { item: "Orange", price: 100, quantity: 4 },
+        { item: "Agbalumo", price: 50, quantity: 10 },
+        { item: "Grapes", price: 3500, quantity: 2 },
+    ]
+
+    let sumNum = testArr.reduce((total, item, index) => {
+        return total + (item.price * item.quantity);
+    }, 0)
+    console.log(sumNum);
+
+    //spread operators
+    let arr1 = [1, 2, 3, 4, 5];
+    let arr2 = [6, 7, 8, 9, 0];
+    let arr3 = [...arr1, ...arr2];
+    console.log(arr3);
+
+    let obj1 = {name:"Test", age:1111, food:"Bread"};
+    let obj2 = {color:"Green", isSingle: true, testLocation:"Ibadan"};
+    let obj3 = {...obj1, ...obj2};
+    console.log(obj3);
+
+
+    //Array and object destructuring;
+    let strArrOne = ["Green", "Red", "Blue", "Purple", "Grey", "Brown", "Orange"];
+    let [green, red, blue, purple, grey, brown, orange] = strArrOne;
+    console.log(orange);
+
+    let {name, age, food, color, isSingle, testLocation} = obj3;
+    console.log(testLocation);
+
+
+</script>
+
+</html>
