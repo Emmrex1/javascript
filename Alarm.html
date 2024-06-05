@@ -39,10 +39,10 @@
 </head>
 <body>
     <div class="alarm-container">
-        
+        <div id="current-time" class="mb-3"></div> 
         <div class="mb-3 Emmanuel">
-            <span id="currentHours" class="time-display">00</span>:
-            <span id="currentMinutes" class="time-display">00</span>:
+            <span id="currentHours" class="time-display">00</span>
+            <span id="currentMinutes" class="time-display">00</span>
             <span id="currentSeconds" class="time-display">00</span>
         </div>
         <h2>Set Alarm</h2>
@@ -56,11 +56,11 @@
 
         <div id="alarmStatus" class="mt-3"></div>
         <div id="alarmActions" class="mt-3"></div>
+
     </div>
-    <audio id="alarmTone" src="./Applause.mp3"></audio>
+    <audio id="alarmTone" src="./nice-wake-up-alarm-21474.mp3"></audio>
     <script>
-
-
+    const currentTimeElement = document.getElementById('current-time');
     const currentHoursElement = document.getElementById('currentHours');
     const currentMinutesElement = document.getElementById('currentMinutes');
     const currentSecondsElement = document.getElementById('currentSeconds');
@@ -72,7 +72,8 @@
     const alarmActionsElement = document.getElementById('alarmActions');
     const alarmTone = document.getElementById('alarmTone');
 
-     let alarmTime = null;
+    let alarmTime =  localStorage.getItem('alarmTime');
+     let alarmTimeout = null;
      let alarmPaused = false;
 
     function updateTime() {
@@ -87,15 +88,21 @@
         if (alarmTime && `${hours}:${minutes}` === alarmTime && !alarmPaused) {
             alarmTone.play();
             clearTimeout(alarmTimeout);
-            alarmStatusElement.innerHTML = '';
+            alarmTime = null;
+            localStorage.removeItem('alarmTime');
+            alarmStatusElement.textContent = '';
         }
-    }
 
+        setTimeout(updateTime, 1000);
+    }
     function setAlarm() {
         const hours = alarmHoursInput.value.padStart(2, '0');
         const minutes = alarmMinutesInput.value.padStart(2, '0');
-        if (hours && minutes && !isNaN(hours) && !isNaN(minutes)) {
-            alarmTime = `${hours}:${minutes}`;
+        if (hours && minutes && !isNaN(hours) && !isNaN(minutes) && hours <=24 && minutes<=59 ) {
+         const user ={ 
+                alarmTime : `${hours}:${minutes}`
+         }
+            localStorage.setItem('alarmTime', JSON.stringify(user));
             alarmStatusElement.innerHTML = `Alarm set for ${alarmTime}`;
             alarmPaused = false;
 
@@ -116,6 +123,12 @@
 
     function pauseAlarm() {
         alarmPaused = !alarmPaused;
+        if (alarmPaused) {
+            alarmTone.pause();
+            alarmStatusElement.innerHTML = 'Alarm paused';
+        } else {
+            alarmStatusElement.innerHTML = `Alarm set for ${alarmTime}`;
+        }
         alarmStatusElement.innerHTML = alarmPaused ? 'Alarm paused' : `Alarm set for ${alarmTime}`;
     }
 
@@ -125,6 +138,7 @@
 
         if (newHours !== null && newMinutes !== null && !isNaN(newHours) && !isNaN(newMinutes)) {
             alarmTime = `${newHours.padStart(2, '0')}:${newMinutes.padStart(2, '0')}`;
+            localStorage.setItem('alarmTime', alarmTime)
             alarmStatusElement.innerHTML = `Alarm set for ${alarmTime}`;
             alert(`Alarm updated to ${alarmTime}`);
         } else {
@@ -144,7 +158,7 @@
 
     setInterval(updateTime, 1000);
 
-
+//   
 
 
     </script>
