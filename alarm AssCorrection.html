@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="mx-auto w-100 card shadow-lg container mt-3 p-3s" style="height: 650px;">
+        <div class="d-flex justify-content-evenly w-100 align-items-center" style="height: 300px;">
+            <div id="hourDiv" style="height: 200px;"
+                class="card w-25 bg bg-secondary d-flex justify-content-center align-items-center"></div>
+
+            <div id="minuteDiv" style="height: 200px;"
+                class="card w-25 bg bg-secondary d-flex justify-content-center align-items-center"></div>
+
+            <div id="secondDiv" style="height: 200px;"
+                class="card w-25 bg bg-secondary d-flex justify-content-center align-items-center"></div>
+        </div>
+
+        <div class="card w-100 shadow-lg d-flex flex-column align-items-center" style="height: 150px;">
+            <h4>Set alarm</h4>
+            <div class="d-flex w-100 justify-content-evenly my-3">
+                <input id="hour" placeholder="Input hour" class="form-control border border-dark" style="width: 45%;"
+                    type="number">
+                <input id="minute" placeholder="Input minute" class="form-control border border-dark"
+                    style="width: 45%;" type="number">
+            </div>
+
+            <div>
+                <button class="btn btn-dark" onclick="setAlarm()">Set alarm</button>
+                <button class="btn btn-dark" onclick="pauseAlarm()">Pause alarm</button>
+
+            </div>
+        </div>
+         <div id="displayAlarm"
+            style="overflow-x: scroll; display: flex; height: 200px; align-items: center; justify-content: center;">
+
+        </div>
+        <audio src="../../../Music/11 - Bohemian Rhapsody.mp3" id="song"></audio>
+    </section>
+</body>
+<script type="">
+
+    let hour = document.getElementById('hour');
+    let minute = document.getElementById('minute');
+    let hourDiv = document.getElementById('hourDiv');
+    let minuteDiv = document.getElementById('minuteDiv');
+    let secondDiv = document.getElementById('secondDiv');
+    let displayAlarm = document.getElementById("displayAlarm");
+    let song = document.getElementById("song");
+
+    function displayTime() {
+        if (localStorage.getItem('alarmArr') === null) {
+            localStorage.setItem("alarmArr", '[]')
+        }
+
+        setInterval(() => {
+            let date = new Date();
+            hourDiv.innerHTML = `<h6 class='display-6 text-center'> ${date.getHours()}</h6>`;
+            minuteDiv.innerHTML = `<h6 class='display-6 text-center'> ${date.getMinutes()}</h6>`
+            secondDiv.innerHTML = `<h6 class='display-6 text-center'> ${date.getSeconds()}</h6>`
+        }, 1000)
+
+        let alarmArr = JSON.parse(localStorage.getItem('alarmArr'));
+        // console.log(alarmArr[0].hour)
+        alarmArr.length === 0 ? displayAlarm.innerHTML = `<h6 class='display-6 text-center'>No alarm has been set yet</h6>` :
+            alarmArr.map((item, index) => {
+                displayAlarm.innerHTML += `
+                <div class='p-3 card' style='height:180px;'>
+                    <h6>Hour: ${item.hour}</h6>
+                    <h6>Minute: ${item.minute}</h6>
+                    <div>
+                        <button class='btn btn-warning' onclick='editAlarm(${index})'>Edit alarm</button>
+                        <button class='btn btn-danger' onclick='deleteAlarm(${index})'>Delete alarm</button>
+                    </div>
+                </div>`
+            
+            })
+
+    }
+    displayTime()
+
+    function setAlarm() {
+        let alarmHour = hour.value;
+        let alarmMinute = minute.value;
+        let alarmArr = JSON.parse(localStorage.getItem("alarmArr")) || [];
+        if (alarmHour === '' || alarmMinute === '') {
+            alert("Insert the alarm time")
+            return
+        }
+
+        let newAlarm = {
+            hour: Number(alarmHour),
+            minute: Number(alarmMinute)
+        }
+
+        alarmArr.push(newAlarm);
+        localStorage.setItem("alarmArr", JSON.stringify(alarmArr));
+        alert("New alarm created")
+        displayTime()
+    }
+
+    setInterval(() => {
+        let alarmArr = JSON.parse(localStorage.getItem('alarmArr'));
+        let date = new Date();
+        let currentHour = date.getHours();
+        let currentMinute = date.getMinutes();
+        alarmArr.map((item, index) => {
+            if (currentHour === item.hour && currentMinute === item.minute) {
+                song.play();
+            }
+        })
+    }, 1000)
+
+    function pauseAlarm() {
+        window.location.reload();
+        sound.pause();
+    }
+
+    function editAlarm(index) {
+        let alarmArr = JSON.parse(localStorage.getItem('alarmArr'));
+        let newHour = prompt("Enter new alarm hour: ", alarmArr[index].hour);
+        let newMinute = prompt("Enter new alarm minute: ", alarmArr[index].minute);
+
+        let newAlarm = {
+            hour: newHour,
+            minute: newMinute,
+        };
+        // alarmArr.splice(index, 1, newAlarm);
+        alarmArr[index] = newAlarm;
+
+        localStorage.setItem("alarmArr", JSON.stringify(alarmArr));
+        alert(`Alarm ${index + 1} has been edited`);
+        displayTime();
+    }
+
+    function deleteAlarm(index) {
+        let alarmArr = JSON.parse(localStorage.getItem('alarmArr'));
+        alarmArr.splice(index, 1);
+        localStorage.setItem("alarmArr", JSON.stringify(alarmArr));
+        alert(`Alarm ${index + 1} has been deleted`);
+        displayTime();
+    }
+
+    const generateCode = () => {
+        const code = Math.floor(Math.random() * 900000) + 100000;
+        console.log(code)
+        return code.toString();
+    };
+    generateCode()
+</script>
+
+</html>
